@@ -1,0 +1,17 @@
+mutation CreateItem($item: uuid!, $quantity: Int!) {
+  insert_orders_one(object: { item: $item, quantity: $quantity }) {
+    id
+    item
+    quantity
+  }
+}
+
+mutation UpdateItem($id: uuid!, $quantity: Int!) {
+  update_orders(_set: { quantity: $quantity }, where: { id: { _eq: $id } }) {
+    returning {
+      id
+      item
+      quantity
+    }
+  }
+}

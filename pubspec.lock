@@ -211,6 +211,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.4"
+  ferry_hive_store:
+    dependency: "direct main"
+    description:
+      name: ferry_hive_store
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.4"
   ferry_store:
     dependency: transitive
     description:
@@ -305,6 +312,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.0"
+  gql_transform_link:
+    dependency: "direct main"
+    description:
+      name: gql_transform_link
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.0"
   graphs:
     dependency: transitive
     description:

@@ -12,11 +12,13 @@ dependencies:
   flutter:
     sdk: flutter
   ferry: ^0.10.2+2
+  ferry_hive_store: ^0.4.2
   gql_http_link: ^0.4.0
   hive: ^2.0.4
   hive_flutter: ^1.1.0
 
   cupertino_icons: ^1.0.2
+  gql_transform_link: ^0.2.0
 
 dev_dependencies:
   flutter_test:
