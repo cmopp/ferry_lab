@@ -6,6 +6,9 @@ part of 'orders.data.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+Serializer<GOrdersData> _$gOrdersDataSerializer = new _$GOrdersDataSerializer();
+Serializer<GOrdersData_orders> _$gOrdersDataOrdersSerializer =
+    new _$GOrdersData_ordersSerializer();
 Serializer<GCreateItemData> _$gCreateItemDataSerializer =
     new _$GCreateItemDataSerializer();
 Serializer<GCreateItemData_insert_orders_one>
@@ -19,6 +22,120 @@ Serializer<GUpdateItemData_update_orders>
 Serializer<GUpdateItemData_update_orders_returning>
     _$gUpdateItemDataUpdateOrdersReturningSerializer =
     new _$GUpdateItemData_update_orders_returningSerializer();
+
+class _$GOrdersDataSerializer implements StructuredSerializer<GOrdersData> {
+  @override
+  final Iterable<Type> types = const [GOrdersData, _$GOrdersData];
+  @override
+  final String wireName = 'GOrdersData';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, GOrdersData object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'orders',
+      serializers.serialize(object.orders,
+          specifiedType: const FullType(
+              BuiltList, const [const FullType(GOrdersData_orders)])),
+    ];
+
+    return result;
+  }
+
+  @override
+  GOrdersData deserialize(Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GOrdersDataBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'orders':
+          result.orders.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(GOrdersData_orders)]))!
+              as BuiltList<Object?>);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GOrdersData_ordersSerializer
+    implements StructuredSerializer<GOrdersData_orders> {
+  @override
+  final Iterable<Type> types = const [GOrdersData_orders, _$GOrdersData_orders];
+  @override
+  final String wireName = 'GOrdersData_orders';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GOrdersData_orders object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'id',
+      serializers.serialize(object.id,
+          specifiedType: const FullType(_i2.Guuid)),
+      'item',
+      serializers.serialize(object.item,
+          specifiedType: const FullType(_i2.Guuid)),
+      'quantity',
+      serializers.serialize(object.quantity,
+          specifiedType: const FullType(int)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GOrdersData_orders deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GOrdersData_ordersBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'id':
+          result.id.replace(serializers.deserialize(value,
+              specifiedType: const FullType(_i2.Guuid))! as _i2.Guuid);
+          break;
+        case 'item':
+          result.item.replace(serializers.deserialize(value,
+              specifiedType: const FullType(_i2.Guuid))! as _i2.Guuid);
+          break;
+        case 'quantity':
+          result.quantity = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
 
 class _$GCreateItemDataSerializer
     implements StructuredSerializer<GCreateItemData> {
@@ -316,6 +433,256 @@ class _$GUpdateItemData_update_orders_returningSerializer
     }
 
     return result.build();
+  }
+}
+
+class _$GOrdersData extends GOrdersData {
+  @override
+  final String G__typename;
+  @override
+  final BuiltList<GOrdersData_orders> orders;
+
+  factory _$GOrdersData([void Function(GOrdersDataBuilder)? updates]) =>
+      (new GOrdersDataBuilder()..update(updates)).build();
+
+  _$GOrdersData._({required this.G__typename, required this.orders})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, 'GOrdersData', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(orders, 'GOrdersData', 'orders');
+  }
+
+  @override
+  GOrdersData rebuild(void Function(GOrdersDataBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GOrdersDataBuilder toBuilder() => new GOrdersDataBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GOrdersData &&
+        G__typename == other.G__typename &&
+        orders == other.orders;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc($jc(0, G__typename.hashCode), orders.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('GOrdersData')
+          ..add('G__typename', G__typename)
+          ..add('orders', orders))
+        .toString();
+  }
+}
+
+class GOrdersDataBuilder implements Builder<GOrdersData, GOrdersDataBuilder> {
+  _$GOrdersData? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  ListBuilder<GOrdersData_orders>? _orders;
+  ListBuilder<GOrdersData_orders> get orders =>
+      _$this._orders ??= new ListBuilder<GOrdersData_orders>();
+  set orders(ListBuilder<GOrdersData_orders>? orders) =>
+      _$this._orders = orders;
+
+  GOrdersDataBuilder() {
+    GOrdersData._initializeBuilder(this);
+  }
+
+  GOrdersDataBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _orders = $v.orders.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GOrdersData other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GOrdersData;
+  }
+
+  @override
+  void update(void Function(GOrdersDataBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$GOrdersData build() {
+    _$GOrdersData _$result;
+    try {
+      _$result = _$v ??
+          new _$GOrdersData._(
+              G__typename: BuiltValueNullFieldError.checkNotNull(
+                  G__typename, 'GOrdersData', 'G__typename'),
+              orders: orders.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'orders';
+        orders.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'GOrdersData', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GOrdersData_orders extends GOrdersData_orders {
+  @override
+  final String G__typename;
+  @override
+  final _i2.Guuid id;
+  @override
+  final _i2.Guuid item;
+  @override
+  final int quantity;
+
+  factory _$GOrdersData_orders(
+          [void Function(GOrdersData_ordersBuilder)? updates]) =>
+      (new GOrdersData_ordersBuilder()..update(updates)).build();
+
+  _$GOrdersData_orders._(
+      {required this.G__typename,
+      required this.id,
+      required this.item,
+      required this.quantity})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, 'GOrdersData_orders', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(id, 'GOrdersData_orders', 'id');
+    BuiltValueNullFieldError.checkNotNull(item, 'GOrdersData_orders', 'item');
+    BuiltValueNullFieldError.checkNotNull(
+        quantity, 'GOrdersData_orders', 'quantity');
+  }
+
+  @override
+  GOrdersData_orders rebuild(
+          void Function(GOrdersData_ordersBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GOrdersData_ordersBuilder toBuilder() =>
+      new GOrdersData_ordersBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GOrdersData_orders &&
+        G__typename == other.G__typename &&
+        id == other.id &&
+        item == other.item &&
+        quantity == other.quantity;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc(
+        $jc($jc($jc(0, G__typename.hashCode), id.hashCode), item.hashCode),
+        quantity.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('GOrdersData_orders')
+          ..add('G__typename', G__typename)
+          ..add('id', id)
+          ..add('item', item)
+          ..add('quantity', quantity))
+        .toString();
+  }
+}
+
+class GOrdersData_ordersBuilder
+    implements Builder<GOrdersData_orders, GOrdersData_ordersBuilder> {
+  _$GOrdersData_orders? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  _i2.GuuidBuilder? _id;
+  _i2.GuuidBuilder get id => _$this._id ??= new _i2.GuuidBuilder();
+  set id(_i2.GuuidBuilder? id) => _$this._id = id;
+
+  _i2.GuuidBuilder? _item;
+  _i2.GuuidBuilder get item => _$this._item ??= new _i2.GuuidBuilder();
+  set item(_i2.GuuidBuilder? item) => _$this._item = item;
+
+  int? _quantity;
+  int? get quantity => _$this._quantity;
+  set quantity(int? quantity) => _$this._quantity = quantity;
+
+  GOrdersData_ordersBuilder() {
+    GOrdersData_orders._initializeBuilder(this);
+  }
+
+  GOrdersData_ordersBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id.toBuilder();
+      _item = $v.item.toBuilder();
+      _quantity = $v.quantity;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GOrdersData_orders other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GOrdersData_orders;
+  }
+
+  @override
+  void update(void Function(GOrdersData_ordersBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$GOrdersData_orders build() {
+    _$GOrdersData_orders _$result;
+    try {
+      _$result = _$v ??
+          new _$GOrdersData_orders._(
+              G__typename: BuiltValueNullFieldError.checkNotNull(
+                  G__typename, 'GOrdersData_orders', 'G__typename'),
+              id: id.build(),
+              item: item.build(),
+              quantity: BuiltValueNullFieldError.checkNotNull(
+                  quantity, 'GOrdersData_orders', 'quantity'));
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'id';
+        id.build();
+        _$failedField = 'item';
+        item.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'GOrdersData_orders', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
   }
 }
 

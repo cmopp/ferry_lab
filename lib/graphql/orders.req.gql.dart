@@ -11,6 +11,41 @@ import 'package:gql_exec/gql_exec.dart' as _i4;
 
 part 'orders.req.gql.g.dart';
 
+abstract class GOrdersReq
+    implements
+        Built<GOrdersReq, GOrdersReqBuilder>,
+        _i1.OperationRequest<_i2.GOrdersData, _i3.GOrdersVars> {
+  GOrdersReq._();
+
+  factory GOrdersReq([Function(GOrdersReqBuilder b) updates]) = _$GOrdersReq;
+
+  static void _initializeBuilder(GOrdersReqBuilder b) => b
+    ..operation = _i4.Operation(document: _i5.document, operationName: 'Orders')
+    ..executeOnListen = true;
+  _i3.GOrdersVars get vars;
+  _i4.Operation get operation;
+  _i4.Request get execRequest =>
+      _i4.Request(operation: operation, variables: vars.toJson());
+  String? get requestId;
+  @BuiltValueField(serialize: false)
+  _i2.GOrdersData? Function(_i2.GOrdersData?, _i2.GOrdersData?)?
+      get updateResult;
+  _i2.GOrdersData? get optimisticResponse;
+  String? get updateCacheHandlerKey;
+  Map<String, dynamic>? get updateCacheHandlerContext;
+  _i1.FetchPolicy? get fetchPolicy;
+  bool get executeOnListen;
+  @override
+  _i2.GOrdersData? parseData(Map<String, dynamic> json) =>
+      _i2.GOrdersData.fromJson(json);
+  static Serializer<GOrdersReq> get serializer => _$gOrdersReqSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GOrdersReq.serializer, this)
+          as Map<String, dynamic>);
+  static GOrdersReq? fromJson(Map<String, dynamic> json) =>
+      _i6.serializers.deserializeWith(GOrdersReq.serializer, json);
+}
+
 abstract class GCreateItemReq
     implements
         Built<GCreateItemReq, GCreateItemReqBuilder>,

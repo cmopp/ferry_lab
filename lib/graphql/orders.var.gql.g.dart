@@ -6,10 +6,30 @@ part of 'orders.var.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+Serializer<GOrdersVars> _$gOrdersVarsSerializer = new _$GOrdersVarsSerializer();
 Serializer<GCreateItemVars> _$gCreateItemVarsSerializer =
     new _$GCreateItemVarsSerializer();
 Serializer<GUpdateItemVars> _$gUpdateItemVarsSerializer =
     new _$GUpdateItemVarsSerializer();
+
+class _$GOrdersVarsSerializer implements StructuredSerializer<GOrdersVars> {
+  @override
+  final Iterable<Type> types = const [GOrdersVars, _$GOrdersVars];
+  @override
+  final String wireName = 'GOrdersVars';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, GOrdersVars object,
+      {FullType specifiedType = FullType.unspecified}) {
+    return <Object?>[];
+  }
+
+  @override
+  GOrdersVars deserialize(Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    return new GOrdersVarsBuilder().build();
+  }
+}
 
 class _$GCreateItemVarsSerializer
     implements StructuredSerializer<GCreateItemVars> {
@@ -24,7 +44,7 @@ class _$GCreateItemVarsSerializer
     final result = <Object?>[
       'item',
       serializers.serialize(object.item,
-          specifiedType: const FullType(_i1.Guuid)),
+          specifiedType: const FullType(_i2.Guuid)),
       'quantity',
       serializers.serialize(object.quantity,
           specifiedType: const FullType(int)),
@@ -47,7 +67,7 @@ class _$GCreateItemVarsSerializer
       switch (key) {
         case 'item':
           result.item.replace(serializers.deserialize(value,
-              specifiedType: const FullType(_i1.Guuid))! as _i1.Guuid);
+              specifiedType: const FullType(_i2.Guuid))! as _i2.Guuid);
           break;
         case 'quantity':
           result.quantity = serializers.deserialize(value,
@@ -73,7 +93,7 @@ class _$GUpdateItemVarsSerializer
     final result = <Object?>[
       'id',
       serializers.serialize(object.id,
-          specifiedType: const FullType(_i1.Guuid)),
+          specifiedType: const FullType(_i2.Guuid)),
       'quantity',
       serializers.serialize(object.quantity,
           specifiedType: const FullType(int)),
@@ -96,7 +116,7 @@ class _$GUpdateItemVarsSerializer
       switch (key) {
         case 'id':
           result.id.replace(serializers.deserialize(value,
-              specifiedType: const FullType(_i1.Guuid))! as _i1.Guuid);
+              specifiedType: const FullType(_i2.Guuid))! as _i2.Guuid);
           break;
         case 'quantity':
           result.quantity = serializers.deserialize(value,
@@ -109,9 +129,63 @@ class _$GUpdateItemVarsSerializer
   }
 }
 
+class _$GOrdersVars extends GOrdersVars {
+  factory _$GOrdersVars([void Function(GOrdersVarsBuilder)? updates]) =>
+      (new GOrdersVarsBuilder()..update(updates)).build();
+
+  _$GOrdersVars._() : super._();
+
+  @override
+  GOrdersVars rebuild(void Function(GOrdersVarsBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GOrdersVarsBuilder toBuilder() => new GOrdersVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GOrdersVars;
+  }
+
+  @override
+  int get hashCode {
+    return 567801108;
+  }
+
+  @override
+  String toString() {
+    return newBuiltValueToStringHelper('GOrdersVars').toString();
+  }
+}
+
+class GOrdersVarsBuilder implements Builder<GOrdersVars, GOrdersVarsBuilder> {
+  _$GOrdersVars? _$v;
+
+  GOrdersVarsBuilder();
+
+  @override
+  void replace(GOrdersVars other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GOrdersVars;
+  }
+
+  @override
+  void update(void Function(GOrdersVarsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$GOrdersVars build() {
+    final _$result = _$v ?? new _$GOrdersVars._();
+    replace(_$result);
+    return _$result;
+  }
+}
+
 class _$GCreateItemVars extends GCreateItemVars {
   @override
-  final _i1.Guuid item;
+  final _i2.Guuid item;
   @override
   final int quantity;
 
@@ -159,9 +233,9 @@ class GCreateItemVarsBuilder
     implements Builder<GCreateItemVars, GCreateItemVarsBuilder> {
   _$GCreateItemVars? _$v;
 
-  _i1.GuuidBuilder? _item;
-  _i1.GuuidBuilder get item => _$this._item ??= new _i1.GuuidBuilder();
-  set item(_i1.GuuidBuilder? item) => _$this._item = item;
+  _i2.GuuidBuilder? _item;
+  _i2.GuuidBuilder get item => _$this._item ??= new _i2.GuuidBuilder();
+  set item(_i2.GuuidBuilder? item) => _$this._item = item;
 
   int? _quantity;
   int? get quantity => _$this._quantity;
@@ -217,7 +291,7 @@ class GCreateItemVarsBuilder
 
 class _$GUpdateItemVars extends GUpdateItemVars {
   @override
-  final _i1.Guuid id;
+  final _i2.Guuid id;
   @override
   final int quantity;
 
@@ -264,9 +338,9 @@ class GUpdateItemVarsBuilder
     implements Builder<GUpdateItemVars, GUpdateItemVarsBuilder> {
   _$GUpdateItemVars? _$v;
 
-  _i1.GuuidBuilder? _id;
-  _i1.GuuidBuilder get id => _$this._id ??= new _i1.GuuidBuilder();
-  set id(_i1.GuuidBuilder? id) => _$this._id = id;
+  _i2.GuuidBuilder? _id;
+  _i2.GuuidBuilder get id => _$this._id ??= new _i2.GuuidBuilder();
+  set id(_i2.GuuidBuilder? id) => _$this._id = id;
 
   int? _quantity;
   int? get quantity => _$this._quantity;

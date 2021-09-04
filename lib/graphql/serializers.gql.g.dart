@@ -12,6 +12,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GCreateItemReq.serializer)
       ..add(GCreateItemVars.serializer)
       ..add(GInt_comparison_exp.serializer)
+      ..add(GOrdersData.serializer)
+      ..add(GOrdersData_orders.serializer)
+      ..add(GOrdersReq.serializer)
+      ..add(GOrdersVars.serializer)
       ..add(GString_comparison_exp.serializer)
       ..add(GUpdateItemData.serializer)
       ..add(GUpdateItemData_update_orders.serializer)
@@ -40,6 +44,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Gorders_update_column.serializer)
       ..add(Guuid.serializer)
       ..add(Guuid_comparison_exp.serializer)
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GOrdersData_orders)]),
+          () => new ListBuilder<GOrdersData_orders>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(GUpdateItemData_update_orders_returning)]),

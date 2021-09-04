@@ -8,6 +8,47 @@ import 'package:ferry_lab/graphql/user-schema.schema.gql.dart' as _i2;
 
 part 'orders.data.gql.g.dart';
 
+abstract class GOrdersData implements Built<GOrdersData, GOrdersDataBuilder> {
+  GOrdersData._();
+
+  factory GOrdersData([Function(GOrdersDataBuilder b) updates]) = _$GOrdersData;
+
+  static void _initializeBuilder(GOrdersDataBuilder b) =>
+      b..G__typename = 'query_root';
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  BuiltList<GOrdersData_orders> get orders;
+  static Serializer<GOrdersData> get serializer => _$gOrdersDataSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GOrdersData.serializer, this)
+          as Map<String, dynamic>);
+  static GOrdersData? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(GOrdersData.serializer, json);
+}
+
+abstract class GOrdersData_orders
+    implements Built<GOrdersData_orders, GOrdersData_ordersBuilder> {
+  GOrdersData_orders._();
+
+  factory GOrdersData_orders([Function(GOrdersData_ordersBuilder b) updates]) =
+      _$GOrdersData_orders;
+
+  static void _initializeBuilder(GOrdersData_ordersBuilder b) =>
+      b..G__typename = 'orders';
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  _i2.Guuid get id;
+  _i2.Guuid get item;
+  int get quantity;
+  static Serializer<GOrdersData_orders> get serializer =>
+      _$gOrdersDataOrdersSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GOrdersData_orders.serializer, this)
+          as Map<String, dynamic>);
+  static GOrdersData_orders? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(GOrdersData_orders.serializer, json);
+}
+
 abstract class GCreateItemData
     implements Built<GCreateItemData, GCreateItemDataBuilder> {
   GCreateItemData._();

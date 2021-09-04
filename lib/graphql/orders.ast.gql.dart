@@ -2,6 +2,38 @@
 
 import 'package:gql/ast.dart' as _i1;
 
+const Orders = _i1.OperationDefinitionNode(
+    type: _i1.OperationType.query,
+    name: _i1.NameNode(value: 'Orders'),
+    variableDefinitions: [],
+    directives: [],
+    selectionSet: _i1.SelectionSetNode(selections: [
+      _i1.FieldNode(
+          name: _i1.NameNode(value: 'orders'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: _i1.SelectionSetNode(selections: [
+            _i1.FieldNode(
+                name: _i1.NameNode(value: 'id'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null),
+            _i1.FieldNode(
+                name: _i1.NameNode(value: 'item'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null),
+            _i1.FieldNode(
+                name: _i1.NameNode(value: 'quantity'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null)
+          ]))
+    ]));
 const CreateItem = _i1.OperationDefinitionNode(
     type: _i1.OperationType.mutation,
     name: _i1.NameNode(value: 'CreateItem'),
@@ -133,4 +165,5 @@ const UpdateItem = _i1.OperationDefinitionNode(
                 ]))
           ]))
     ]));
-const document = _i1.DocumentNode(definitions: [CreateItem, UpdateItem]);
+const document =
+    _i1.DocumentNode(definitions: [Orders, CreateItem, UpdateItem]);

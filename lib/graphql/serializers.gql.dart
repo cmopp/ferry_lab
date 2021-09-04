@@ -5,13 +5,15 @@ import 'package:ferry_lab/graphql/orders.data.gql.dart'
     show
         GCreateItemData,
         GCreateItemData_insert_orders_one,
+        GOrdersData,
+        GOrdersData_orders,
         GUpdateItemData,
         GUpdateItemData_update_orders,
         GUpdateItemData_update_orders_returning;
 import 'package:ferry_lab/graphql/orders.req.gql.dart'
-    show GCreateItemReq, GUpdateItemReq;
+    show GCreateItemReq, GOrdersReq, GUpdateItemReq;
 import 'package:ferry_lab/graphql/orders.var.gql.dart'
-    show GCreateItemVars, GUpdateItemVars;
+    show GCreateItemVars, GOrdersVars, GUpdateItemVars;
 import 'package:ferry_lab/graphql/user-schema.schema.gql.dart'
     show
         GInt_comparison_exp,
@@ -52,6 +54,10 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GCreateItemReq,
   GCreateItemVars,
   GInt_comparison_exp,
+  GOrdersData,
+  GOrdersData_orders,
+  GOrdersReq,
+  GOrdersVars,
   GString_comparison_exp,
   GUpdateItemData,
   GUpdateItemData_update_orders,

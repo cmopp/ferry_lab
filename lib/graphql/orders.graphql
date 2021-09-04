@@ -1,3 +1,11 @@
+query Orders {
+  orders {
+    id
+    item
+    quantity
+  }
+}
+
 mutation CreateItem($item: uuid!, $quantity: Int!) {
   insert_orders_one(object: { item: $item, quantity: $quantity }) {
     id
