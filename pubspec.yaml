@@ -25,6 +25,7 @@ dev_dependencies:
     sdk: flutter
   build_runner: ^2.0.5
   ferry_generator: ^0.4.3
+  mocktail: ^0.1.4
 
 flutter:
 
