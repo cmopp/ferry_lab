@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:ferry/ferry.dart';
 import 'package:gql_exec/gql_exec.dart';
@@ -16,21 +14,21 @@ void main() {
   group('Ferry Insert Tests', () {
     late Client ferryClient;
     late GCreateItemReq createItemReq;
-    late MockHttpLink fakeLink;
+    late MockHttpLink mockLink;
 
     setUpAll(() {
       registerFallbackValue<Request>(MockRequest());
     });
     setUp(() {
-      fakeLink = MockHttpLink();
-      ferryClient = Client(link: fakeLink);
+      mockLink = MockHttpLink();
+      ferryClient = Client(link: mockLink);
       createItemReq = GCreateItemReq((b) => b
         ..vars.item.value = '__item_id__'
         ..vars.quantity = 1);
     });
     test('Execute First Insert Request', () async {
       ferryClient.request(createItemReq).listen((response) {
-        final args = (verify(() => fakeLink.request(captureAny())).captured)
+        final args = (verify(() => mockLink.request(captureAny())).captured)
             .toString()
             .replaceAll('\\n', '\n');
         print(args);
@@ -38,7 +36,7 @@ void main() {
     });
     test('Execute Second Insert Request', () async {
       ferryClient.request(createItemReq).listen((response) {
-        final args = (verify(() => fakeLink.request(captureAny())).captured)
+        final args = (verify(() => mockLink.request(captureAny())).captured)
             .toString()
             .replaceAll('\\n', '\n');
         print(args);
