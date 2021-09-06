@@ -61,26 +61,28 @@ void insertOrder() {
     ..item.value = 'f1d90fe7-0dae-431c-8921-7e13c762ef5f'
     ..quantity = 1);
 
-  // (() async {
   if (client == null) return;
   try {
-    client!.request(createItemReq(order)).listen((response) {
-      if (response.hasErrors) {
-        final error =
-            (response.linkException ?? response.graphqlErrors).toString();
-        print(error);
-        throw Exception(error);
-      }
-      if (!response.loading) {
-        insertedOrderIdValue = response.data?.insert_orders_one?.id.value;
-        print('DataSource: ${response.dataSource}');
-        print('Response: ${response.data}');
-      }
-    });
+    if (client!.requestController.hasListener) {
+      client!.requestController.add(createItemReq(order));
+    } else {
+      client!.request(createItemReq(order)).listen((response) {
+        if (response.hasErrors) {
+          final error =
+              (response.linkException ?? response.graphqlErrors).toString();
+          print(error);
+          throw Exception(error);
+        }
+        if (!response.loading) {
+          insertedOrderIdValue = response.data?.insert_orders_one?.id.value;
+          print('DataSource: ${response.dataSource}');
+          print('Response: ${response.data}');
+        }
+      });
+    }
   } on Exception catch (e) {
-    print(e.toString());
+    print(e);
   }
-  // })();
 }
 
 Client? client;
