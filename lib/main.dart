@@ -56,6 +56,19 @@ GUpdateItemReq updateItemReq({
   );
 }
 
+void onData(OperationResponse<GCreateItemData, GCreateItemVars> response) {
+  if (response.hasErrors) {
+    final error = (response.linkException ?? response.graphqlErrors).toString();
+    print(error);
+    throw Exception(error);
+  }
+  if (!response.loading) {
+    insertedOrderIdValue = response.data?.insert_orders_one?.id.value;
+    print('DataSource: ${response.dataSource}');
+    print('Response: ${response.data}');
+  }
+}
+
 void insertOrder() {
   final order = Gorders_insert_input((b) => b
     ..item.value = 'f1d90fe7-0dae-431c-8921-7e13c762ef5f'
@@ -66,19 +79,7 @@ void insertOrder() {
     if (client!.requestController.hasListener) {
       client!.requestController.add(createItemReq(order));
     } else {
-      client!.request(createItemReq(order)).listen((response) {
-        if (response.hasErrors) {
-          final error =
-              (response.linkException ?? response.graphqlErrors).toString();
-          print(error);
-          throw Exception(error);
-        }
-        if (!response.loading) {
-          insertedOrderIdValue = response.data?.insert_orders_one?.id.value;
-          print('DataSource: ${response.dataSource}');
-          print('Response: ${response.data}');
-        }
-      });
+      client!.request(createItemReq(order)).listen(onData);
     }
   } on Exception catch (e) {
     print(e);
