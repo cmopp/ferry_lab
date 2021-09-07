@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:ferry/ferry.dart';
@@ -66,6 +68,7 @@ void onData(OperationResponse<GCreateItemData, GCreateItemVars> response) {
     insertedOrderIdValue = response.data?.insert_orders_one?.id.value;
     print('DataSource: ${response.dataSource}');
     print('Response: ${response.data}');
+    subscription?.cancel();
   }
 }
 
@@ -76,11 +79,7 @@ void insertOrder() {
 
   if (client == null) return;
   try {
-    if (client!.requestController.hasListener) {
-      client!.requestController.add(createItemReq(order));
-    } else {
-      client!.request(createItemReq(order)).listen(onData);
-    }
+    subscription = client!.request(createItemReq(order)).listen(onData);
   } on Exception catch (e) {
     print(e);
   }
@@ -88,6 +87,8 @@ void insertOrder() {
 
 Client? client;
 String? insertedOrderIdValue;
+StreamSubscription<OperationResponse<GCreateItemData, GCreateItemVars>>?
+    subscription;
 
 void main() async {
   client = await initFerryClient();
